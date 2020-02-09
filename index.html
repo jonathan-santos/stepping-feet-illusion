@@ -4,36 +4,38 @@
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Stepping Feet Illusion</title>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-        }
-        .title {
-            padding-left: 15px;
-        }
-
-        .canvas {
-            padding: 15px 0;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: black;
-        }
-
-        canvas {
-            background-color: #fff;
-            max-width: 100%;
-        }
-    </style>
+    <link rel='stylesheet' href='index.css'>
 </head>
 <body>
-    <div class="title">
+    <div class='title'>
         <h1>Stepping Feet Illusion</h1>
         <p>A simple Canvas program to demonstrate the Stepping Feet Illusion</p>
     </div>
-    <div class="canvas">
+
+    <div class='controls'>
+        <div class='control'>
+            <label for='width'>width: </label>
+            <input type='range' min='1' value='80' max='100' name='width' id='width' onchange='updateBoxes(this)'>
+        </div>
+        <div class='control'>
+            <label for='height'>height: </label>
+            <input type='range' min='1' value='30' max='100' name='height' id='height' onchange='updateBoxes(this)'>
+        </div>
+        <div class='control'>
+            <label for='speed'>speed: </label>
+            <input type='range' min='1' value='5' max='20' name='speed' id='speed' onchange='updateBoxes(this)'>
+        </div>
+        <div class='control'>
+            <label for='quantity'>quantity: </label>
+            <input type='range' min='2' value='2' max='8' name='quantity' id='quantity' onchange='updateBoxes(this)'>
+        </div>
+        <div class='control'>
+            <label for='margin'>margin: </label>
+            <input type='range' min='1' value='30' max='100' name='margin' id='margin' onchange='updateBoxes(this)'>
+        </div>
+    </div>
+
+    <div class='canvas'>
         <canvas width='640' height='480'>
             Your browser doesn't support canvas, please use another more updated browser.
         </canvas>

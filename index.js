@@ -2,45 +2,61 @@ var canvas = document.querySelector('canvas')
 var ctx = canvas.getContext('2d')
 
 var fps = 1000/30 //30 fps
-var stripeSize = 20
-var boxSize = {
+var stripeSize = 20.75
+var boxes = {
     width: 80,
-    height: 30
-}
-var box1 = {
-    color: '#00f',
+    height: 30,
     x: 0,
-    y: 180,
-    speed: 5
+    speed: 5,
+    quantity: 2,
+    margin: 30,
+    colors: [
+        '#14f00c',
+        '#dce30e',
+        '#1637f5',
+        '#ff0a0a',
+        '#9233ff',
+        '#de186b',
+        '#5c4a01',
+        '#1ef7e9',
+    ],
+    getY: function(i, j) {
+        var middleOfCanvas = canvas.height / 2
+        var isNumberEven = i % 2 == 0
+        var shouldNumberBeNegative = isNumberEven ? -1 : 1
+        var y = middleOfCanvas + (j * shouldNumberBeNegative) - (boxes.height / 2)
+        return y
+    }
 }
 
-var box2 = {
-    color: '#ff0',
-    x: 0,
-    y: 260,
-    speed: 5
-}
-
+// Create drawing loop 
 setInterval(function() {
+    // Clear background
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    // Making backgroud black stripes
+    // Draw background black stripes
     ctx.fillStyle = '#000'
-    for(var i = 0; i < canvas.width; i += stripeSize * 2) {
+    for(var i = stripeSize; i < canvas.width; i += stripeSize * 2) {
         ctx.fillRect(i, 0, stripeSize, canvas.height)
     }
+
+    // Draw boxes 
+    for(var i = 0, j = boxes.margin; i < boxes.quantity; i++) {
+        if(i >= 2 && i % 2 == 0)
+            j += boxes.margin * 2
+            
+        ctx.fillStyle = boxes.colors[i]
+        ctx.fillRect(boxes.x, boxes.getY(i, j), boxes.width, boxes.height)
+    }
     
-    ctx.fillStyle = box1.color
-    ctx.fillRect(box1.x, box1.y, boxSize.width, boxSize.height)
+    // Alter boxes position
+    boxes.x += boxes.speed
 
-    ctx.fillStyle = box2.color
-    ctx.fillRect(box2.x, box2.y, boxSize.width, boxSize.height)
-
-    if(box1.x + boxSize.width > canvas.width || box1.x < 0)
-        box1.speed *= -1
-    if(box2.x + boxSize.width > canvas.width || box2.x < 0)
-        box2.speed *= -1
-
-    box1.x += box1.speed
-    box2.x += box2.speed
+    // Reset boxes position when they reach the edges of screen
+    if(boxes.x + boxes.width > canvas.width || boxes.x < 0)
+        boxes.speed *= -1
 }, fps)
+
+function updateBoxes(e) {
+    boxes[e.name] = parseInt(e.value)
+}
