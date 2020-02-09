@@ -11,17 +11,21 @@ main {
     flex-direction: column;
 }
 
-.title, .controls {
+.header, .controls {
     padding-left: 1rem;
     text-align: center;
 }
 
-    .title h1 {
+    .header .title {
         font-size: 2rem;
     }
 
-    .title p {
+    .header .description {
         font-size: 1.3rem;
+    }
+
+    .header .repo {
+      font-size: 1rem;
     }
 
 .controls {
