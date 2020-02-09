@@ -3,28 +3,31 @@ var ctx = canvas.getContext('2d')
 
 var fps = 1000/30 //30 fps
 var stripeSize = 20.75
-var boxes = {
-    width: 80,
-    height: 30,
+var config = {
+    boxWidth: 80,
+    boxHeight: 30,
     x: 0,
-    speed: 5,
-    quantity: 2,
-    margin: 30,
-    colors: [
-        '#14f00c',
-        '#dce30e',
-        '#1637f5',
-        '#ff0a0a',
-        '#9233ff',
-        '#de186b',
-        '#5c4a01',
-        '#1ef7e9',
+    boxSpeed: 5,
+    boxQuantity: 2,
+    boxMargin: 30,
+    boxColors: [
+        '#000',
+        '#fff',
+        '#fff',
+        '#000',
+        '#000',
+        '#fff',
+        '#fff',
+        '#000',
+        '#000',
+        '#fff',
     ],
+    stripesOpacity: 1,
     getY: function(i, j) {
         var middleOfCanvas = canvas.height / 2
         var isNumberEven = i % 2 == 0
         var shouldNumberBeNegative = isNumberEven ? -1 : 1
-        var y = middleOfCanvas + (j * shouldNumberBeNegative) - (boxes.height / 2)
+        var y = middleOfCanvas + (j * shouldNumberBeNegative) - (config.boxHeight / 2)
         return y
     }
 }
@@ -35,28 +38,28 @@ setInterval(function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
     // Draw background black stripes
-    ctx.fillStyle = '#000'
+    ctx.fillStyle = `rgba(0, 0, 0, ${config.stripesOpacity})`
     for(var i = stripeSize; i < canvas.width; i += stripeSize * 2) {
         ctx.fillRect(i, 0, stripeSize, canvas.height)
     }
 
-    // Draw boxes 
-    for(var i = 0, j = boxes.margin; i < boxes.quantity; i++) {
+    // Draw config 
+    for(var i = 0, j = config.boxMargin ; i < config.boxQuantity ; i++) {
         if(i >= 2 && i % 2 == 0)
-            j += boxes.margin * 2
+            j += config.boxMargin  * 2
             
-        ctx.fillStyle = boxes.colors[i]
-        ctx.fillRect(boxes.x, boxes.getY(i, j), boxes.width, boxes.height)
+        ctx.fillStyle = config.boxColors[i]
+        ctx.fillRect(config.x, config.getY(i, j), config.boxWidth, config.boxHeight)
     }
     
-    // Alter boxes position
-    boxes.x += boxes.speed
+    // Alter config position
+    config.x += config.boxSpeed
 
-    // Reset boxes position when they reach the edges of screen
-    if(boxes.x + boxes.width > canvas.width || boxes.x < 0)
-        boxes.speed *= -1
+    // Reset config position when they reach the edges of screen
+    if(config.x + config.boxWidth > canvas.width || config.x < 0)
+        config.boxSpeed *= -1
 }, fps)
 
-function updateBoxes(e) {
-    boxes[e.name] = parseInt(e.value)
+function updateConfig(e) {
+    config[e.name] = parseFloat(e.value)
 }

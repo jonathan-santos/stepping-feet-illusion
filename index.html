@@ -7,39 +7,46 @@
     <link rel='stylesheet' href='index.css'>
 </head>
 <body>
-    <div class='title'>
-        <h1>Stepping Feet Illusion</h1>
-        <p>A simple Canvas program to demonstrate the Stepping Feet Illusion</p>
-    </div>
+    <main>
+        <div class='title'>
+            <h1>Stepping Feet Illusion</h1>
+            <p>A Canvas program to demonstrate the Stepping Feet Illusion</p>
+        </div>
+    
+        <div class='controls'>
+            <div class='control'>
+                <label for='boxWidth'>Box Width: </label>
+                <input type='range' min='1' value='80' max='100' name='boxWidth' id='boxWidth' onchange='updateConfig(this)'>
+            </div>
+            <div class='control'>
+                <label for='boxHeight'>Box Height: </label>
+                <input type='range' min='1' value='30' max='100' name='boxHeight' id='boxHeight' onchange='updateConfig(this)'>
+            </div>
+            <div class='control'>
+                <label for='boxSpeed'>Box Speed: </label>
+                <input type='range' min='1' value='5' max='20' name='boxSpeed' id='boxSpeed' onchange='updateConfig(this)'>
+            </div>
+            <div class='control'>
+                <label for='boxQuantity'>Box Quantity: </label>
+                <input type='range' min='2' value='2' max='10' name='boxQuantity' id='boxQuantity' onchange='updateConfig(this)'>
+            </div>
+            <div class='control'>
+                <label for='boxMargin'>Box Margin: </label>
+                <input type='range' min='1' value='30' max='100' name='boxMargin' id='boxMargin' onchange='updateConfig(this)'>
+            </div>
+            <div class='control'>
+                <label for='stripesOpacity'>Stripes Opacity: </label>
+                <input type='range' min='0.1' value='1' max='1' name='stripesOpacity' id='stripesOpacity' onchange='updateConfig(this)' step='0.1'>
+            </div>
+        </div>
+    
+        <div class='canvas'>
+            <canvas width='640' height='480'>
+                Your browser doesn't support canvas, please use another more updated browser.
+            </canvas>
+        </div>
+    </main>
 
-    <div class='controls'>
-        <div class='control'>
-            <label for='width'>width: </label>
-            <input type='range' min='1' value='80' max='100' name='width' id='width' onchange='updateBoxes(this)'>
-        </div>
-        <div class='control'>
-            <label for='height'>height: </label>
-            <input type='range' min='1' value='30' max='100' name='height' id='height' onchange='updateBoxes(this)'>
-        </div>
-        <div class='control'>
-            <label for='speed'>speed: </label>
-            <input type='range' min='1' value='5' max='20' name='speed' id='speed' onchange='updateBoxes(this)'>
-        </div>
-        <div class='control'>
-            <label for='quantity'>quantity: </label>
-            <input type='range' min='2' value='2' max='8' name='quantity' id='quantity' onchange='updateBoxes(this)'>
-        </div>
-        <div class='control'>
-            <label for='margin'>margin: </label>
-            <input type='range' min='1' value='30' max='100' name='margin' id='margin' onchange='updateBoxes(this)'>
-        </div>
-    </div>
-
-    <div class='canvas'>
-        <canvas width='640' height='480'>
-            Your browser doesn't support canvas, please use another more updated browser.
-        </canvas>
-    </div>
     <script src='./index.js'></script>
 </body>
 </html>
