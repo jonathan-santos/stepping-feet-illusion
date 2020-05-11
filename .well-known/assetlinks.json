@@ -1,0 +1,8 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+        "namespace": "android_app",
+        "package_name": "com.jhow.stepping-feet-illusion",
+        "sha256_cert_fingerprints": ["9C:D3:56:09:BF:E5:FC:7B:9B:10:3D:47:59:25:EF:8C:4E:2B:41:B4:8A:B5:47:A7:DB:62:4C:1D:89:E1:1F:A6"]
+    }
+}]
