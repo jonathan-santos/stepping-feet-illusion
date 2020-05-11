@@ -6,13 +6,11 @@ html, body {
 }
 
 main {
-    height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 .header, .controls {
-    padding-left: 1rem;
     text-align: center;
 }
 
@@ -58,10 +56,9 @@ main {
     }
 
 .canvas {
-    padding: 1rem 0;
-    flex: 1;
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
 }
 
