@@ -1,3 +1,7 @@
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js');
+}
+
 var canvas = document.querySelector('canvas')
 var ctx = canvas.getContext('2d')
 
