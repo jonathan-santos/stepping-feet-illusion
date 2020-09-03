@@ -3,7 +3,7 @@
     "short_name": "SF Illusion",
     "description": "A Canvas program to demonstrate the Stepping Feet Illusion",
     "scope": "/stepping-feet-illusion/",
-    "start_url": "/",
+    "start_url": "../index.html",
     "orientation": "portrait",
     "lang": "en-US",
     "theme_color": "#8be9fd",
