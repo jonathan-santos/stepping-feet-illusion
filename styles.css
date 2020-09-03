@@ -1,38 +1,66 @@
-html, body {
+* {
+  box-sizing: border-box;
+}
+
+html, body, main {
     margin: 0;
     padding: 0;
+    height: 100vh;
+    overflow: hidden;
     background-color: #eee;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+html {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
+    padding: 1rem 0;
+    display: grid;
+    grid-template-rows: auto 11rem 1fr;
 }
 
-.header, .controls {
+    @media (min-width: 910px) {
+        main {
+           grid-template-rows: auto 8rem 1fr;
+        }
+    }
+
+    .header, .controls {
+      max-width: 100%;
+      padding: 0 1rem;
+    }
+
+.header {
+    grid-row: 1;
     text-align: center;
 }
 
+	.header * {
+		margin: 0.75rem 0;
+	}
+
     .header .title {
-        font-size: 2rem;
+        margin-top: 0;
+        font-size: 1.6rem;
     }
 
     .header .description {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
 
     .header .repo {
-      font-size: 1rem;
+      	font-size: 1rem;
     }
 
 .controls {
+    grid-row: 2;
     border-top: 1px solid #333;
     border-bottom: 1px solid #333;
     padding-top: 1rem;;
     padding-bottom: 1rem;;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -55,17 +83,24 @@ main {
         margin-right: 0.5rem;
     }
 
-.canvas {
-    padding: 1rem 0.5rem 0.5rem 0.5rem;
-    display: flex;
-    align-items: start;
-    justify-content: center;
+canvas {
+    grid-row: 3;
+    height: calc(100% - 1rem);
+    margin: 1rem auto 0 auto;
+    border: 1px solid #333;
+    padding: 0;
+    background-color: #fff;
 }
 
-canvas {
-    border: 1px solid #333;
-    background-color: #fff;
-    max-width: 100%;
+@media (max-width: 600px) {
+  .headers, .controls {
+    width: 100vw;
+  }
+
+  canvas {
+    width: calc(100% - 2rem);
+    height: auto;
+  }
 }
 
 /* #region input range */
