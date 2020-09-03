@@ -2,7 +2,7 @@
     "name": "Stepping Feet Illusion",
     "short_name": "SF Illusion",
     "description": "A Canvas program to demonstrate the Stepping Feet Illusion",
-    "scope": "./stepping-feet-illusion/",
+    "scope": "/stepping-feet-illusion/",
     "start_url": "/",
     "orientation": "portrait",
     "lang": "en-US",
